@@ -1,7 +1,7 @@
 INSTRUCTION(auipc,  U, 0x00000017, 0x0000007f, rd = pc + imm)
 INSTRUCTION(lui,    U, 0x00000037, 0x0000007f, rd = imm)
 INSTRUCTION(jal,    J, 0x0000006f, 0x0000007f, rd = pc + 4; pc += imm)
-INSTRUCTION(jalr,   L, 0x00000067, 0x0000707f, rd = pc + 4; pc = rs1 + imm)
+INSTRUCTION(jalr,   L, 0x00000067, 0x0000707f, rd = pc + 4; pc = (rs1 + imm) & ~1)
 
 INSTRUCTION(lb,     L, 0x00000003, 0x0000707f, rd = load(rs1 + imm, 1))
 INSTRUCTION(sb,     S, 0x00000023, 0x0000707f,     store(rs1 + imm, 1, rs2))
